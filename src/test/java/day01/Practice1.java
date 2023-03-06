@@ -1,11 +1,6 @@
 package day01;
 
-import io.restassured.RestAssured;
-import io.restassured.RestAssured.*;
-import io.restassured.matcher.RestAssuredMatchers.*;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +48,42 @@ public class Practice1 {
         //testing the Content-Length value is: 17
         assertEquals("17",response.header("Content-Length"));
 
+    }
+    @DisplayName("Testing/hello endpoint body")
+    @Test
+    public void testingHelloResponseBody(){
+        //get the body and assert the body equal to Hello from Sparta
+        Response response=get("http://44.199.212.141:8000/api/hello");
+        //getting the body as STring using asString ,method
+        System.out.println(response.asString());
+        //getting the body by calling body method
+        System.out.println(response.body().asString());
+        //assert the body is Hello from Sparta,length is 17
+        String helloBody=response.asString();
+
+      assertEquals("Hello from Sparta", helloBody);
+      assertEquals(17,helloBody.length());
 
     }
+
+    @DisplayName("Printing the response body using method")
+    @Test
+    public void printingBody(){
+        Response response=get("http://44.199.212.141:8000/api/hello");
+        response.prettyPrint();
+        System.out.println("==========================");
+        //it will print out the entire response
+        response.prettyPeek();
+        System.out.println("================");
+        //I want to see entire repsonse plus to see the status code into a variable in same
+        //statement
+       int statusCode= response.prettyPeek().statusCode();
+        System.out.println("PRINTING ONLY STATUS CODE "+statusCode);
+
+
+    }
+
+
+
 
 }
