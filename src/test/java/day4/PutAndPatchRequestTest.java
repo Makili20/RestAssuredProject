@@ -8,10 +8,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojo.Spartan;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
+import static org.hamcrest.Matchers.is;
 
 public class PutAndPatchRequestTest {
 
@@ -74,10 +77,55 @@ public class PutAndPatchRequestTest {
                 then()
                 .log().all()
                 .statusCode(204);
+
+        //MAKING ANOTHER GET REQUEST TO MAKE IT SURE THAT WORKS !!!!
+
+        when()
+                .get("spartans/{id}",5).
+
+         then()
+                .log().all()
+                .statusCode(200)
+                .body("name",is(randomName));
+
     }
 
+    @DisplayName("Patch request")
+    @Test
+    public void testPatchPartialUpdate() {
 
-}
+        //ONLY UPDATE THE NAME WITH FAKER
+        String randomName = new Faker().name().firstName();
+        String patchBody = "\"name\" : \" " + randomName + "\" ";
+        Map<String, Object> patchBodyMap = new HashMap<>();
+        patchBodyMap.put("name", randomName);
+
+        given()
+                .log().all()
+                .contentType(ContentType.JSON)
+                .body(patchBodyMap).
+                when()
+                .patch("/spartans/{id}", 142).
+                then()
+                .log().all()
+                .statusCode(204);
+        // MAKE ANOTHER GET REQUEST HERE TO MAKE SURE IT WORKED
+        when()
+                .get("spartans/{id}",142).
+
+                then()
+                .log().all()
+                .statusCode(200)
+                .body("name",is(randomName));
+
+
+        // CREATE A METHOD THAT POST A RANDOM SPARTAN TO THE SERVER
+        // AND RETURN THE ID OF THAT SPARTAN , SO YOU CAN ALWAYS USE A DATA THAT EXISTS
+
+    }}
+
+
+
 
 
 
