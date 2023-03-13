@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
@@ -83,6 +85,8 @@ public class PostRequestExample {
         System.out.println("Name using jsonPath " + jp.getString("data.name") );
 
 
+   Map<String,Object> responseMap=jp.getMap("");
+        System.out.println("responseMap = " + responseMap);
 
     }
 

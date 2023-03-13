@@ -41,9 +41,9 @@ public class DB_Utility {
         //  to directly get the information as database.url , database.username, database.password
         // without any env
         System.out.println("You are in "+env+" environment");
-        String connectionStr = ConfigurationReader.getProperty( "database.url");
-        String username = ConfigurationReader.getProperty("database.username");
-        String password = ConfigurationReader.getProperty("database.password");
+        String connectionStr = ConfigurationReader.getProperty(env+".database.url");
+        String username = ConfigurationReader.getProperty(env+".database.username");
+        String password = ConfigurationReader.getProperty(env+".database.password");
 
         createConnection(connectionStr,username,password);
 
@@ -380,6 +380,7 @@ public class DB_Utility {
         }
 
     }
+
 
 
 
