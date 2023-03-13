@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.get;
 
 public class HR_ORDS_GroovyMagic {
@@ -34,6 +36,43 @@ public class HR_ORDS_GroovyMagic {
         System.out.println("last id "+jp.getInt("items[-1].employee_id"));
         //print all the ids from first one till fifth
         System.out.println("from the first till the fifth "+jp.getList("items[0..4].employee_id"));
+        //print all the last names from index 10-15
+        System.out.println("last name index from 10-15 "+ jp.getList("items[10..15].last_name"));
 
+        //get the empl first_name with employee id of 105
+        //find and find all where you can specify the criteria to restrict the result
+        //  find method will return single value that fall into the criteria compared to findAll will return a list
+        //  find { it.employee_id == 105 }
+       String result= jp.getString("items.find{it.employee_id==105}.last_name");
+        System.out.println("result = " + result);
+        // what does the word <it> means -->> eachItem in your json array
+        // just like in your for each loop you have to specify a name ,
+        // the name <it> represent each item in the json array
+        // using above example : find the salary of employee with email value LDEHAAN
+        int salary =  jp.getInt("items.find { it.email=='LDEHAAN'}.salary ") ;
+        System.out.println("salary = " + salary);
+        // findAll  will get all the result that match the criteria and return it as a list
+        // save all the first_names of the employees with salary more than 15000
+
+        List<String> richPeople=jp.getList("items.findAll {it.salary>15000}.first_name ");
+        System.out.println("richPeople = " + richPeople);
+        // Find out all the phone_number in department_id 90
+        List<String> phonesDep90 = jp.getList("items.findAll { it.department_id == 90 }.phone_number ") ;
+        System.out.println("phonesDep90 = " + phonesDep90);
+
+        // max , min
+        // find out the max salary
+        int maxSalary =  jp.getInt("items.max{ it.salary }.salary") ;
+        System.out.println("maxSalary = " + maxSalary);
+        // find out the name of the guy who make max salary
+        String richestGuy = jp.getString("items.max {it.salary}.first_name ") ;
+        System.out.println("richestGuy = " + richestGuy);
+
+        // find out the min salary
+        int minSalary =  jp.getInt("items.min{ it.salary }.salary") ;
+        System.out.println("minSalary = " + minSalary);
+        // find out the name of the guy who make min salary
+        String lastGuy = jp.getString("items.min {it.salary}.first_name ") ;
+        System.out.println("min salary employee = " + lastGuy);
     }
 }
