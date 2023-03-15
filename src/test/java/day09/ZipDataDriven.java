@@ -46,6 +46,14 @@ public class ZipDataDriven {
         System.out.println("zipList = " + zipList);
 
         assertThat(zipList,hasSize(numberOfZipcodes));
+
+        // OPTIONALLY YOU MAY DO AS BELOW TO COUNT YOUR JSON ARRAY
+        // if your jsonpath is pointing to an jsonArray you can count them
+        // by called groovy method called size()
+        System.out.println("calling the size method directly in jsonPath = "
+                + jp.getInt("places.size()"));
+
+
     }
 
 
