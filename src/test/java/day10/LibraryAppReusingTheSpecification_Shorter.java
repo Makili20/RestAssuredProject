@@ -3,13 +3,16 @@ package day10;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pojo.User;
 import utilities.ConfigurationReader;
 import utilities.LibraryUtil;
 
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
@@ -52,9 +55,9 @@ public class LibraryAppReusingTheSpecification_Shorter {
     public void testGetAllUsers() {
 
 
-        when()
-                .get(" /get_all_users");
-
+     Response response=when().get(" /get_all_users");
+        JsonPath jp=response.jsonPath();
+        List<User> allUserList=jp.getList("",User.class);
 
     }
 //get the Map<String,String>object out of the response of Get/dashboard stats
