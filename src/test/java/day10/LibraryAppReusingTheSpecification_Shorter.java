@@ -3,11 +3,14 @@ package day10;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import utilities.ConfigurationReader;
 import utilities.LibraryUtil;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 
@@ -54,14 +57,18 @@ public class LibraryAppReusingTheSpecification_Shorter {
 
 
     }
-
+//get the Map<String,String>object out of the response of Get/dashboard stats
     @DisplayName("Testing GET /dashboard_stats Endpoint with spec")
     @Test
     public void testGet_Dashboard_stats() {
 
-        when()
-                .get(" /dashboard_stats");
+     Response response= when()
+                .get(" /dashboard_stats").prettyPeek();
+     //if here is no path needed t get to what you are looking for
+        //or if you wanted to polint to your entire response,you can just provide ""
 
+        Map<String,Object> statMap= response.jsonPath().getMap("");
+        System.out.println("statMap = " + statMap);
 
     }
 }
