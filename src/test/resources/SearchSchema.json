@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "gender",
+            "phone"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "content"
+  ]
+}
