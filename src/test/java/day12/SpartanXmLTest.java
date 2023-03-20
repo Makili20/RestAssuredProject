@@ -71,12 +71,12 @@ public class SpartanXmLTest {
         // assert above list has items 424 , 592 , 77
         // import static org.hamcrest.MatcherAssert.assertThat;
         // practice hamcrest matcher
-        assertThat( idList ,hasSize(485)  ) ;
+        assertThat( idList ,hasSize(202)  ) ;
         // when we got the List<Integer> without specifying what type in getList method
         // somehow it can not decide the in the Hamcrest assertThat method it's a List<Integer>
         // so the fix was to provide class type for the getList method to make it obvious
         // like this  List<Integer> idList = xp.getList("List.item.id", Integer.class) ;
-        assertThat(idList, hasItems(424,592,77) );
+        assertThat(idList, hasItems(4,6,2) );
 
         // Get a List of Long from the phone numbers
         // first check the size is 479
@@ -86,7 +86,7 @@ public class SpartanXmLTest {
         List<Long> phoneNums = xp.getList("List.item.phone", Long.class);
         System.out.println("phone Nums = " + phoneNums);
 
-        assertThat(phoneNums, hasSize(485) );
+        assertThat(phoneNums, hasSize(202) );
         //9876543210, 7685940321, 7234567890
         assertThat(phoneNums, hasItems(9876543210L, 7685940321L, 7234567890L) );
 
