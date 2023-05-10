@@ -3,6 +3,7 @@ package pojo;
 public class Spartan {
     // a class for Plain Old Java Object (POJO)
 // to represent data
+        private int id;
         private String name;
         private String gender;
         private long phone;
@@ -11,11 +12,15 @@ public class Spartan {
 
         }
 
+
     public Spartan(String name, String gender, long phone) {
+;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
     }
+
+
 
     public String getName() {
         return name;
