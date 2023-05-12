@@ -1,8 +1,10 @@
 package pojo;
 
+//@JsonIgnoreProperties(value = "id",allowSetters = true)
 public class Spartan {
     // a class for Plain Old Java Object (POJO)
 // to represent data
+
         private int id;
         private String name;
         private String gender;
@@ -13,6 +15,10 @@ public class Spartan {
         }
 
 
+    public Spartan(int id) {
+        this.id = id;
+    }
+
     public Spartan(String name, String gender, long phone) {
 ;
         this.name = name;
@@ -20,7 +26,13 @@ public class Spartan {
         this.phone = phone;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
