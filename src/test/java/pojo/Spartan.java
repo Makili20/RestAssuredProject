@@ -1,6 +1,13 @@
 package pojo;
 
-//@JsonIgnoreProperties(value = "id",allowSetters = true)
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true,value = {"id"},allowSetters = true)
+@Builder
+
 public class Spartan {
     // a class for Plain Old Java Object (POJO)
 // to represent data

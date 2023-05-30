@@ -11,16 +11,20 @@ public class SpartanAuthTestBase {
     @BeforeAll
     public static void init(){
         RestAssured.baseURI ="http://3.84.25.6:7000";
+        RestAssured.basePath="/api";
 
-        String dbUrl ="jdbc:oracle:thin:@3.84.25.6:1521:XE";
+      /*  String dbUrl ="jdbc:oracle:thin:@3.84.25.6:1521:XE";
         String dbUsername ="SP";
         String dbPassword = "SP";
 
+
+       */
         //DBUtils.createConnection(dbUrl,dbUsername,dbPassword);
     }
 
     @AfterAll
     public static void close(){
+        RestAssured.reset();
         // DBUtils.destroy();
     }
 }
